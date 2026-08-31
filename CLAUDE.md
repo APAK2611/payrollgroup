@@ -1,18 +1,18 @@
 # Project Catalog
 
 ## Stack (already installed and wired — record the values)
-- GitHub repo: [confirm]
-- Vercel project: [confirm]
-- Domain: [confirm]
-- Supabase project: [confirm]
-- Supabase URL: [confirm]
-- Supabase service key: [confirm]
-- Resend account: [confirm]
+- GitHub repo: github.com/APAK2611/payrollgroup
+- Vercel project: apa9/payrollgroup (framework preset: nextjs)
+- Domain: payrollgroup.vercel.app (custom domain payrollgroup.com.au not yet attached)
+- Supabase project: zyokahbnctcqrowzgyea (region ap-southeast-2)
+- Supabase URL: https://zyokahbnctcqrowzgyea.supabase.co
+- Supabase service key: in .env.local + Vercel Production env (SUPABASE_SERVICE_ROLE_KEY)
+- Resend account: [pending] — not needed until Build 2
 
 ## Build (filled as we go)
 - Plan written: [done]
-- Build 1 (small) status: [pending]
-- Admin account seeded: [pending]
+- Build 1 (small) status: ✅
+- Admin account seeded: ✅ with email kylie@austpayroll.com.au
 - Build 2 (all) status: [pending]
 - Resend domain verified: [pending]
 
