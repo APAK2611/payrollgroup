@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { sendInquiryEmails } from '@/lib/email';
 import {
   INQUIRY_TYPE_VALUES,
   CUSTOM_ATTRIBUTES,
@@ -121,6 +122,18 @@ export async function POST(request) {
   if (contactErr) {
     console.error('insert contact error', contactErr);
     return NextResponse.json({ error: 'Could not save.' }, { status: 500 });
+  }
+
+  // Best-effort confirmation + notification emails. Never blocks the
+  // response — the lead is already saved.
+  try {
+    await sendInquiryEmails({
+      person: { email, name, company: clean(body.company) },
+      contact: { type, message: clean(body.message) },
+      siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+    });
+  } catch (e) {
+    console.error('email dispatch error', e.message);
   }
 
   return NextResponse.json({ ok: true });
