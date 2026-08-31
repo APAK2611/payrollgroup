@@ -39,6 +39,7 @@ export async function updateContactStatus(contactId, toStatus) {
   if (logErr) console.error('activity_log insert failed', logErr);
 
   revalidatePath('/admin');
+  revalidatePath('/admin/inquiries');
   revalidatePath(`/admin/people/${contact.person_id}`);
   return { ok: true };
 }
