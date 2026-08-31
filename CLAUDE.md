@@ -13,7 +13,7 @@
 - Plan written: [done]
 - Build 1 (small) status: ✅
 - Admin account seeded: ✅ with email kylie@austpayroll.com.au
-- Build 2 (all) status: [pending]
+- Build 2 (all) status: back end ✅ (People directory, pipeline + activity_log, Orders, Newsletter, all behind login); email ⏳ pending Resend domain verification
 - Resend domain verified: [pending]
 
 # How to use this catalog

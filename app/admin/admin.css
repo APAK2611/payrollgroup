@@ -207,3 +207,248 @@ tbody tr:hover {
   font-size: 14px;
   margin: 0 0 24px;
 }
+
+/* ---- Build 2: nav, detail, controls ---- */
+.admin-nav {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  margin: 0 24px;
+}
+.admin-nav-link {
+  padding: 8px 14px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+}
+.admin-nav-link:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+.admin-nav-link.active {
+  background: rgba(72, 94, 136, 0.1);
+  color: var(--primary-dark);
+}
+.admin-email {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .admin-topbar-inner {
+    flex-wrap: wrap;
+  }
+  .admin-nav {
+    order: 3;
+    width: 100%;
+    margin: 12px 0 0;
+    overflow-x: auto;
+  }
+}
+
+.link {
+  color: var(--primary);
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  max-width: 560px;
+}
+.search-bar input {
+  flex: 1;
+}
+.search-bar .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+/* Status select (pipeline stage) */
+.status-select select {
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(236, 189, 61, 0.14);
+  border-color: transparent;
+  cursor: pointer;
+}
+.status-select.stage-won select {
+  background: rgba(52, 140, 90, 0.16);
+  color: #256b45;
+}
+.status-select.stage-lost select {
+  background: rgba(163, 53, 47, 0.12);
+  color: #a3352f;
+}
+.status-err {
+  color: #a3352f;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Person detail */
+.crumbs {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.detail-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 880px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.detail-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.panel h2 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+.kv {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px 12px;
+  margin: 0;
+  font-size: 14px;
+}
+.kv dt {
+  color: var(--muted);
+  font-weight: 500;
+}
+.kv dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mini-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.mini-table th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.mini-table td {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Timeline */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.timeline li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.timeline .arrow {
+  color: var(--muted);
+}
+.timeline-meta {
+  color: var(--muted);
+}
+
+/* Newsletter toggle */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px 6px 6px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+}
+.toggle-knob {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--neutral);
+  transition: background 0.15s;
+}
+.toggle.on {
+  background: rgba(72, 94, 136, 0.1);
+  border-color: rgba(72, 94, 136, 0.3);
+}
+.toggle.on .toggle-knob {
+  background: var(--primary);
+}
+
+/* Order form */
+.order-form-row {
+  margin-bottom: 4px;
+}
+.order-form-row.three {
+  display: grid;
+  grid-template-columns: 1fr 90px 130px;
+  gap: 12px;
+}
+@media (max-width: 520px) {
+  .order-form-row.three {
+    grid-template-columns: 1fr;
+  }
+}

@@ -30,7 +30,9 @@ function connString() {
 }
 
 async function main() {
-  const sql = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
+  const file = process.argv[2] || 'schema.sql';
+  const sql = fs.readFileSync(path.join(__dirname, file), 'utf8');
+  console.log('Applying', file);
   const client = new pg.Client({
     connectionString: connString(),
     ssl: { rejectUnauthorized: false },
