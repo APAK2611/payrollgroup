@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture · Australian Payroll Association CRM</title>
+<style>
+  :root {
+    --primary: #485e88;
+    --accent: #ecbd3d;
+    --neutral: #a0aec1;
+    --ink: #1c2333;
+    --muted: #5b6577;
+    --line: #e6e9ef;
+    --bg: #ffffff;
+    --panel: #f7f8fa;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink); background: var(--bg); margin: 0;
+    line-height: 1.62; font-size: 17px; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 72px 28px 120px; }
+  header.masthead { border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 40px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 600; color: var(--primary); margin: 0 0 14px; }
+  h1 { font-size: 38px; line-height: 1.14; letter-spacing: -.02em; margin: 0 0 10px; font-weight: 700; }
+  .sub { color: var(--muted); font-size: 18px; margin: 0; }
+  h2 { font-size: 23px; letter-spacing: -.01em; font-weight: 700; margin: 52px 0 16px; }
+  h3 { font-size: 17px; font-weight: 650; margin: 26px 0 8px; }
+  p { margin: 0 0 16px; }
+  code {
+    background: var(--panel); border: 1px solid var(--line); padding: 1px 6px;
+    border-radius: 5px; font-size: 14px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .layer {
+    border: 1px solid var(--line); border-left: 3px solid var(--primary);
+    border-radius: 10px; padding: 16px 22px; margin: 12px 0; background: var(--panel);
+  }
+  .layer h3 { margin-top: 0; color: var(--primary); }
+  .layer p { margin: 0; font-size: 16px; }
+  ol.flow { padding-left: 0; counter-reset: step; list-style: none; margin: 8px 0; }
+  ol.flow li {
+    position: relative; padding: 12px 0 12px 46px; border-bottom: 1px solid var(--line); font-size: 16px;
+  }
+  ol.flow li:last-child { border-bottom: none; }
+  ol.flow li::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 0; top: 11px; width: 28px; height: 28px;
+    background: var(--primary); color: #fff; border-radius: 999px;
+    text-align: center; line-height: 28px; font-weight: 700; font-size: 14px;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 6px; font-size: 15px; }
+  table caption {
+    text-align: left; font-weight: 700; font-size: 17px; margin: 26px 0 8px; color: var(--ink);
+    caption-side: top;
+  }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--panel); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  td code { font-size: 13px; }
+  .tblwrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; padding: 4px 14px 8px; margin: 12px 0 8px; }
+  .field { font-weight: 600; white-space: nowrap; }
+  .callout {
+    background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    border-radius: 10px; padding: 16px 22px; margin: 18px 0; font-size: 16px;
+  }
+  ul.rel { padding-left: 20px; }
+  ul.rel li { margin: 8px 0; font-size: 16px; }
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  @media (max-width: 620px) {
+    h1 { font-size: 30px; }
+    .wrap { padding: 48px 18px 90px; }
+    th, td { padding: 8px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Architecture</p>
+    <h1>How the CRM is built</h1>
+    <p class="sub">The technical companion to the product plan — Australian Payroll Association · payrollgroup.com.au</p>
+  </header>
+
+  <section>
+    <h2>1 · Overview</h2>
+    <p>This is a Next.js (App Router) app deployed on Vercel, backed by a Supabase Postgres database, with Resend for email. It has two surfaces: a <strong>public marketing site</strong> that captures leads, and an <strong><code>/admin</code> CRM</strong>. <code>/admin</code> starts open and unprotected, and gets locked down with email-and-password Supabase Auth later in the build.</p>
+  </section>
+
+  <section>
+    <h2>2 · How the pieces fit</h2>
+
+    <div class="layer">
+      <h3>Next.js (App Router)</h3>
+      <p>Renders the public marketing site and the <code>/admin</code> CRM. Server code handles form submissions and all database reads and writes — the browser never talks to the database directly.</p>
+    </div>
+    <div class="layer">
+      <h3>Vercel</h3>
+      <p>Hosts and deploys the app. Environment variables hold every secret. A <code>git push</code> triggers a deploy — no manual deploys.</p>
+    </div>
+    <div class="layer">
+      <h3>Supabase (Postgres)</h3>
+      <p>The database. Accessed server-side only, using the service key. Secrets never reach the browser.</p>
+    </div>
+    <div class="layer">
+      <h3>Resend</h3>
+      <p>Sends the confirmation email when a lead comes in. Wired in Build 2, once the sending domain is verified.</p>
+    </div>
+
+    <h3>Environment variables</h3>
+    <div class="tblwrap">
+    <table>
+      <thead><tr><th>Variable</th><th>What it's for</th></tr></thead>
+      <tbody>
+        <tr><td><code>NEXT_PUBLIC_SUPABASE_URL</code></td><td>The address of your Supabase project.</td></tr>
+        <tr><td><code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code></td><td>Public key for any safe, client-side Supabase calls.</td></tr>
+        <tr><td><code>SUPABASE_SERVICE_ROLE_KEY</code></td><td>Secret key for server-side reads/writes. Never exposed to the browser.</td></tr>
+        <tr><td><code>RESEND_API_KEY</code></td><td>Authenticates Resend to send the confirmation email.</td></tr>
+        <tr><td><code>NEXT_PUBLIC_SITE_URL</code></td><td>Your live domain — used for email links and redirects.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>3 · The lead flow</h2>
+    <p>One inquiry, traced end to end:</p>
+    <ol class="flow">
+      <li>A visitor submits the contact form on payrollgroup.com.au.</li>
+      <li>The server <strong>upserts a People row by email</strong> — a returning person is matched, never duplicated.</li>
+      <li>The server creates a linked <strong>Contacts row in status <code>new_lead</code></strong>.</li>
+      <li><em>(Build 2)</em> Resend sends the visitor a confirmation email from your domain.</li>
+      <li>You see the lead in <code>/admin</code>, newest first, and work it through the pipeline.</li>
+      <li>Each status change writes one <strong>activity_log</strong> row, so the history is permanent.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>4 · Data model</h2>
+
+    <div class="tblwrap">
+    <table>
+      <caption>People — one row per person, deduplicated by email</caption>
+      <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id</td><td>uuid</td><td>Primary key.</td></tr>
+        <tr><td class="field">email</td><td>text</td><td>Unique — the dedupe key.</td></tr>
+        <tr><td class="field">name</td><td>text</td><td>Full name.</td></tr>
+        <tr><td class="field">phone</td><td>text</td><td>Contact number.</td></tr>
+        <tr><td class="field">company</td><td>text</td><td>Their organisation.</td></tr>
+        <tr><td class="field">role</td><td>text</td><td>Their job title.</td></tr>
+        <tr><td class="field">source_site</td><td>text</td><td>Which site captured them.</td></tr>
+        <tr><td class="field">ok_to_contact</td><td>boolean</td><td>True means they're on the newsletter.</td></tr>
+        <tr><td class="field">attributes</td><td>jsonb</td><td>Your custom attributes live here:<br>
+          • <code>membership_type</code> — list: Professional Member / Beryl Member / Non-Member<br>
+          • <code>organisation_size</code> — list: 1–50 / 51–200 / 201–500 / 501–1,000 / 1,000+<br>
+          • <code>membership_renewal_date</code> — date: when their membership is due to renew
+        </td></tr>
+        <tr><td class="field">created_at</td><td>timestamptz</td><td>When the person was first captured.</td></tr>
+        <tr><td class="field">updated_at</td><td>timestamptz</td><td>When the record last changed.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="tblwrap">
+    <table>
+      <caption>Contacts — inquiry pipeline; each links to a person</caption>
+      <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id</td><td>uuid</td><td>Primary key.</td></tr>
+        <tr><td class="field">person_id</td><td>uuid</td><td>References People(id).</td></tr>
+        <tr><td class="field">type</td><td>text</td><td>Constrained to: <code>membership</code>, <code>training</code>, <code>consulting</code>, <code>general_enquiry</code>, <code>newsletter_signup</code>.</td></tr>
+        <tr><td class="field">subject</td><td>text</td><td>Short summary of the inquiry.</td></tr>
+        <tr><td class="field">message</td><td>text</td><td>What they wrote.</td></tr>
+        <tr><td class="field">source</td><td>text</td><td>Where the inquiry came from.</td></tr>
+        <tr><td class="field">status</td><td>text</td><td><code>new_lead</code>, <code>contacted</code>, <code>discovery_call</code>, <code>proposal</code>, <code>won</code>, <code>lost</code>.</td></tr>
+        <tr><td class="field">metadata</td><td>jsonb</td><td>Any extra structured detail.</td></tr>
+        <tr><td class="field">created_at</td><td>timestamptz</td><td>When the inquiry arrived.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="tblwrap">
+    <table>
+      <caption>activity_log — one row per Contacts status change</caption>
+      <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id</td><td>uuid</td><td>Primary key.</td></tr>
+        <tr><td class="field">contact_id</td><td>uuid</td><td>References Contacts(id).</td></tr>
+        <tr><td class="field">person_id</td><td>uuid</td><td>References People(id).</td></tr>
+        <tr><td class="field">from_status</td><td>text</td><td>Status before the change.</td></tr>
+        <tr><td class="field">to_status</td><td>text</td><td>Status after the change.</td></tr>
+        <tr><td class="field">actor</td><td>text</td><td>Who made the change.</td></tr>
+        <tr><td class="field">note</td><td>text</td><td>Optional context.</td></tr>
+        <tr><td class="field">created_at</td><td>timestamptz</td><td>When the change happened.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="tblwrap">
+    <table>
+      <caption>Orders — what people bought</caption>
+      <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id</td><td>uuid</td><td>Primary key.</td></tr>
+        <tr><td class="field">person_id</td><td>uuid</td><td>References People(id).</td></tr>
+        <tr><td class="field">product_name</td><td>text</td><td>Membership, training, or consulting item.</td></tr>
+        <tr><td class="field">amount_cents</td><td>integer</td><td>Amount in cents.</td></tr>
+        <tr><td class="field">currency</td><td>text</td><td>Currency code, e.g. AUD.</td></tr>
+        <tr><td class="field">status</td><td>text</td><td><code>pending</code>, <code>paid</code>, <code>refunded</code>, <code>cancelled</code>.</td></tr>
+        <tr><td class="field">created_at</td><td>timestamptz</td><td>When the order was recorded.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout">
+      <strong>Newsletter — not a table.</strong> Tracked by <code>People.ok_to_contact = true</code>. Anyone opted in is on the list; no separate structure.
+    </div>
+  </section>
+
+  <section>
+    <h2>5 · Relationships</h2>
+    <ul class="rel">
+      <li>One <strong>Person</strong> has many <strong>Contacts</strong> (inquiries).</li>
+      <li>One <strong>Contacts</strong> row has many <strong>activity_log</strong> rows.</li>
+      <li>One <strong>Person</strong> has many <strong>Orders</strong>.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Technical companion to <code>Working Files/product-plan.md</code>. If anything here disagrees with <code>CLAUDE.md</code>, CLAUDE.md wins.
+  </footer>
+
+</div>
+</body>
+</html>

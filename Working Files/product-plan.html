@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Plan · Australian Payroll Association</title>
+<style>
+  :root {
+    --primary: #485e88;
+    --accent: #ecbd3d;
+    --neutral: #a0aec1;
+    --ink: #1c2333;
+    --muted: #5b6577;
+    --line: #e6e9ef;
+    --bg: #ffffff;
+    --panel: #f7f8fa;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    margin: 0;
+    line-height: 1.62;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 72px 28px 120px; }
+  header.masthead { border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 44px; }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .14em; font-size: 12px;
+    font-weight: 600; color: var(--primary); margin: 0 0 14px;
+  }
+  h1 { font-size: 40px; line-height: 1.12; letter-spacing: -.02em; margin: 0 0 10px; font-weight: 700; }
+  .sub { color: var(--muted); font-size: 18px; margin: 0; }
+  h2 {
+    font-size: 24px; letter-spacing: -.01em; font-weight: 700;
+    margin: 56px 0 18px; padding-top: 8px;
+  }
+  h3 { font-size: 18px; font-weight: 650; margin: 28px 0 10px; }
+  p { margin: 0 0 16px; }
+  .lead { font-size: 19px; }
+  .callout {
+    background: var(--panel); border: 1px solid var(--line);
+    border-left: 3px solid var(--primary);
+    border-radius: 10px; padding: 20px 24px; margin: 20px 0;
+  }
+  .notbuilding { border-left-color: var(--neutral); }
+  dl.kv { margin: 0; }
+  .kv-row {
+    display: grid; grid-template-columns: 230px 1fr; gap: 8px 24px;
+    padding: 13px 0; border-bottom: 1px solid var(--line);
+  }
+  .kv-row:last-child { border-bottom: none; }
+  dt { font-weight: 600; color: var(--muted); font-size: 15px; }
+  dd { margin: 0; font-size: 16px; }
+  .buildblock {
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 30px 32px; margin: 24px 0;
+  }
+  .buildblock .tag {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: #6a5000; background: var(--accent);
+    padding: 4px 11px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .buildblock h2 { margin-top: 0; }
+  .goal { font-size: 17px; color: var(--ink); }
+  .goal strong { color: var(--primary); }
+  ul.checklist { list-style: none; padding: 0; margin: 6px 0 4px; }
+  ul.checklist li {
+    position: relative; padding: 8px 0 8px 34px; border-bottom: 1px solid var(--line);
+    font-size: 16px;
+  }
+  ul.checklist li:last-child { border-bottom: none; }
+  ul.checklist li::before {
+    content: ""; position: absolute; left: 0; top: 11px;
+    width: 18px; height: 18px; border: 2px solid var(--neutral);
+    border-radius: 5px; background: var(--bg);
+  }
+  .scriteria li::before { border-color: var(--primary); border-radius: 999px; }
+  .label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: .1em;
+    font-weight: 700; color: var(--muted); margin: 24px 0 4px;
+  }
+  code {
+    background: var(--panel); border: 1px solid var(--line);
+    padding: 1px 6px; border-radius: 5px; font-size: 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  @media (max-width: 620px) {
+    h1 { font-size: 32px; }
+    .kv-row { grid-template-columns: 1fr; gap: 2px; }
+    .wrap { padding: 48px 20px 90px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Product Plan</p>
+    <h1>Australian Payroll Association</h1>
+    <p class="sub">A lead-capture CRM for membership, training &amp; consulting — built so no lead goes unseen.</p>
+  </header>
+
+  <section>
+    <h2>What we're actually building and why</h2>
+    <p class="lead">A CRM that puts every new membership, training, and consulting lead in one view the moment it arrives — so a lead can never sit unseen and untouched again. That's the exact gap you named: today, nobody has a single view of where the new leads are.</p>
+
+    <div class="callout">
+      <strong>Who it's for:</strong> you as the operator (and your sales team working the pipeline), plus the person filling out the form on payrollgroup.com.au — someone weighing membership, training, or a consulting engagement with the Association.
+    </div>
+
+    <div class="callout notbuilding">
+      <strong>What we are deliberately NOT building:</strong> no affiliates, no subscriptions, no cohorts, no analytics dashboards, no integrations beyond what's named here. If it isn't load-bearing for capturing and working a lead, it's out.
+    </div>
+  </section>
+
+  <section>
+    <h2>The interview, in short</h2>
+    <dl class="kv">
+      <div class="kv-row"><dt>What's broken today</dt><dd>Leads come in via newsletter, the website form, or phone to sales, and land in HubSpot. They go cold because <strong>nobody has one view of where the new, untouched leads are.</strong></dd></div>
+      <div class="kv-row"><dt>90-day win</dt><dd>Full visibility of new leads <em>and</em> every lead's stage from inquiry to won/lost, in one place. Leads convert to members or consulting clients.</dd></div>
+      <div class="kv-row"><dt>Inquiry volume</dt><dd>~40 inquiries a week.</dd></div>
+      <div class="kv-row"><dt>What you sell</dt><dd>Membership, training, consulting.</dd></div>
+      <div class="kv-row"><dt>Inquiry types</dt><dd><code>membership</code> · <code>training</code> · <code>consulting</code> · <code>general_enquiry</code> · <code>newsletter_signup</code></dd></div>
+      <div class="kv-row"><dt>Design system</dt><dd>Minimalist Apple — clean, calm, premium.</dd></div>
+      <div class="kv-row"><dt>Brand colors</dt><dd>#485e88 slate blue (primary) · #ecbd3d gold (accent) · #a0aec1 blue-grey (neutral)</dd></div>
+      <div class="kv-row"><dt>Custom attributes</dt><dd>
+        <strong>Membership Type</strong> (list) — Professional Member / Beryl Member / Non-Member<br>
+        <strong>Organisation Size</strong> (list) — 1–50 / 51–200 / 201–500 / 501–1,000 / 1,000+<br>
+        <strong>Membership Renewal Date</strong> (date) — when their membership is due to renew
+      </dd></div>
+      <div class="kv-row"><dt>Domain</dt><dd>payrollgroup.com.au</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>The brief that drives every build</h2>
+    <p>Two surfaces: a public marketing site that captures leads, and an <code>/admin</code> CRM. <code>/admin</code> is open at first and gets locked down with email-and-password Supabase Auth later — no auth until you explicitly ask.</p>
+    <p>The CRM has four parts, all accessed server-side with the Supabase service key (secrets never reach the browser):</p>
+    <dl class="kv">
+      <div class="kv-row"><dt>People</dt><dd>Contact directory, one row per person, deduplicated by email. Custom attributes live in a <code>jsonb</code> field.</dd></div>
+      <div class="kv-row"><dt>Contacts</dt><dd>Inquiry pipeline. Each inquiry links to a person and moves through <code>new_lead → contacted → discovery_call → proposal → won / lost</code>.</dd></div>
+      <div class="kv-row"><dt>activity_log</dt><dd>Every status change on a Contacts row writes one row here.</dd></div>
+      <div class="kv-row"><dt>Orders</dt><dd>What people bought — product, amount, status.</dd></div>
+      <div class="kv-row"><dt>Newsletter</dt><dd>Not a table — tracked by <code>people.ok_to_contact = true</code>.</dd></div>
+    </dl>
+  </section>
+
+  <div class="buildblock">
+    <span class="tag">Build 1 · Small</span>
+    <h2>Prove the loop</h2>
+    <p class="goal"><strong>Goal:</strong> A stranger can submit an inquiry on your live site and you can see that lead inside <code>/admin</code>, on the same day, without anyone touching the database by hand. This closes the exact gap you named. It's the smallest thing that proves the whole system works end to end — nothing else matters until this is real.</p>
+
+    <p class="label">Scope</p>
+    <p>The People and Contacts tables with custom attributes in the jsonb column; a working contact form on the live site that writes a People row (upserted by email) and a linked Contacts row; one admin login with a single verified account; one admin page listing incoming leads newest first.</p>
+
+    <p class="label">Definition of Done</p>
+    <ul class="checklist">
+      <li>The contact form is live on your real domain, not localhost.</li>
+      <li>Submitting it creates exactly one People row and one linked Contacts row, deduplicated by email on repeat submits.</li>
+      <li>Your chosen custom attributes are saved correctly inside <code>attributes</code>.</li>
+      <li>A new Contacts row lands in status <code>new_lead</code>.</li>
+      <li>You can log in to <code>/admin</code> with your one seeded account.</li>
+      <li>The admin leads page shows the submission within seconds, newest first.</li>
+      <li>You personally run the full flow once: submit as a visitor, log in, see it.</li>
+    </ul>
+
+    <p class="label">Success Criteria</p>
+    <ul class="checklist scriteria">
+      <li>From a cold start, you can go submit → visible in under 60 seconds.</li>
+      <li>Two submissions from the same email produce one person, not two.</li>
+      <li>You can read the lead's name, type, message, and custom attributes on the admin page without opening Supabase.</li>
+      <li>No lead can land and go unseen — the failure mode you named.</li>
+    </ul>
+  </div>
+
+  <div class="buildblock">
+    <span class="tag">Build 2 · All</span>
+    <h2>Make it the system you run the business from</h2>
+    <p class="goal"><strong>Goal:</strong> Turn the proven loop into the place you actually manage relationships and money. You work leads, record what people bought, and keep your newsletter list entirely from <code>/admin</code> behind your login — and every new lead gets an automatic confirmation email. This is what makes your 90-day win achievable.</p>
+
+    <p class="label">Scope</p>
+    <p>The rest of the <code>/admin</code> back end behind your login: the full People directory, all inquiries with working pipeline stages, the Orders list, and the Newsletter list (<code>ok_to_contact = true</code>). Plus Resend wired so a confirmation email fires on form submit. Every Contacts status change writes an activity_log row.</p>
+
+    <p class="label">Definition of Done</p>
+    <ul class="checklist">
+      <li>All four parts (People, Contacts, Orders, Newsletter) are visible and usable in <code>/admin</code>, and all of <code>/admin</code> sits behind your login.</li>
+      <li>You can move a Contacts row through <code>new_lead → contacted → discovery_call → proposal → won / lost</code> from the interface.</li>
+      <li>Each status change writes one activity_log row with from_status, to_status, and actor.</li>
+      <li>The People directory is searchable and shows your custom attributes.</li>
+      <li>You can add an Orders row against a person and see it on their record.</li>
+      <li>The Newsletter list shows everyone with <code>ok_to_contact = true</code>.</li>
+      <li>Resend is connected, the sending domain is verified, and a real confirmation email arrives after a form submit.</li>
+    </ul>
+
+    <p class="label">Success Criteria</p>
+    <ul class="checklist scriteria">
+      <li>You can run a lead from first inquiry to won without leaving <code>/admin</code> or touching the database.</li>
+      <li>A person's full history — inquiries, status changes, and orders — is visible in one place.</li>
+      <li>A test submission produces a confirmation email in the inbox, not spam, with your domain as the sender.</li>
+      <li>Nothing in <code>/admin</code> is reachable without logging in.</li>
+      <li>At ~40 inquiries a week, this keeps up without you dropping to the database by hand.</li>
+    </ul>
+  </div>
+
+  <footer>
+    Australian Payroll Association · payrollgroup.com.au — this HTML is a formatted view of <code>Working Files/product-plan.md</code>. If anything disagrees with <code>CLAUDE.md</code>, CLAUDE.md wins.
+  </footer>
+
+</div>
+</body>
+</html>
